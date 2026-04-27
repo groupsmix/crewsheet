@@ -1,4 +1,5 @@
-export type Lang = "en" | "es";
+import { site } from "./site";
+export type { Lang } from "./site";
 
 export const dict = {
   en: {
@@ -142,6 +143,9 @@ export const dict = {
     calc_email_thanks: "Got it — check your inbox in 60 seconds.",
 
     proof_title: "Real cleaners. Real Sheets.",
+    proof_disclaimer: "Paraphrased with permission. Real names and photos as we collect them.",
+    proof_empty: "We're collecting case studies from launch users. Yours could be the first — grab the template and tell us how it goes.",
+    proof_empty_cta: "Get the template",
     proof_items: [
       {
         name: "Maria S.",
@@ -199,7 +203,7 @@ export const dict = {
       "I'm not a cleaner. I'm a builder who watched my mom run a 2-person cleaning crew on Post-its for 12 years. She tried Jobber. She quit Jobber in 9 days. The reason was simple: the app didn't show her the data. A Sheet does.",
     founder_p2:
       "CrewSheet is the tool I wish I'd built her in 2018. It's not glamorous. It is honest, cheap, and yours forever.",
-    founder_sign: "— Devin, founder",
+    founder_sign: `— ${site.founderName}, ${site.founderTitle}`,
 
     aff_title: "Cleaning-biz coaches: 30% commission, lifetime",
     aff_sub:
@@ -352,6 +356,9 @@ export const dict = {
     calc_email_thanks: "Listo — revisa tu correo en 60 segundos.",
 
     proof_title: "Limpiadores reales. Sheets reales.",
+    proof_disclaimer: "Parafraseado con permiso. Nombres y fotos reales según los recopilamos.",
+    proof_empty: "Estamos recopilando casos de uso de los primeros usuarios. El tuyo puede ser el primero — lleva la plantilla y cuéntanos.",
+    proof_empty_cta: "Llevar la plantilla",
     proof_items: [
       {
         name: "María S.",
@@ -409,7 +416,7 @@ export const dict = {
       "No soy limpiador. Soy desarrollador. Vi a mi mamá llevar un equipo de limpieza de 2 personas con Post-its durante 12 años. Probó Jobber. Lo dejó en 9 días. La razón: la app no le mostraba los datos. Un Sheet sí.",
     founder_p2:
       "CrewSheet es la herramienta que ojalá le hubiera armado en 2018. No es elegante. Es honesta, barata, y tuya para siempre.",
-    founder_sign: "— Devin, fundador",
+    founder_sign: `— ${site.founderName}, fundador@`.replace("fundador@", "fundador"),
 
     aff_title: "Coaches de negocios de limpieza: 30% comisión, de por vida",
     aff_sub:
@@ -422,6 +429,48 @@ export const dict = {
     foot_refund: "Política de reembolso",
     foot_contact: "Contacto",
   },
-} as const;
+};
 
 export type Dict = typeof dict.en;
+
+export const legal = {
+  en: {
+    privacy_title: "Privacy Policy",
+    privacy_intro: `Your privacy matters. ${site.name} is a template + setup product — we collect the minimum information needed to deliver the template, process payments, and contact you about your purchase.`,
+    terms_title: "Terms of Service",
+    terms_intro: `By purchasing or downloading the ${site.name} template you agree to the following terms. Read them — they're short, in plain English, and we mean every line.`,
+    refund_title: "Refund Policy",
+    refund_intro: `We sell a template you can audit before buying. If it's not for you, ask — these are our refund terms.`,
+    last_updated: "Last updated",
+    back_home: "← Back to homepage",
+    not_found_title: "Page not found",
+    not_found_sub: "That page doesn't exist (anymore). Try one of these:",
+    not_found_links: [
+      { href: "/", label: "Homepage" },
+      { href: "/#pricing", label: "Pricing" },
+      { href: "/#faq", label: "FAQ" },
+      { href: "/privacy/", label: "Privacy" },
+    ],
+    skip: "Skip to content",
+  },
+  es: {
+    privacy_title: "Política de Privacidad",
+    privacy_intro: `Tu privacidad importa. ${site.name} es un producto de plantilla + setup — recolectamos la mínima información necesaria para entregar la plantilla, procesar pagos y contactarte sobre tu compra.`,
+    terms_title: "Términos de Servicio",
+    terms_intro: `Al comprar o descargar la plantilla de ${site.name} aceptas los siguientes términos. Léelos — son cortos, en lenguaje claro, y los respetamos.`,
+    refund_title: "Política de Reembolso",
+    refund_intro: `Vendemos una plantilla que puedes inspeccionar antes de comprar. Si no es para ti, dinos — estos son nuestros términos.`,
+    last_updated: "Última actualización",
+    back_home: "← Volver al inicio",
+    not_found_title: "Página no encontrada",
+    not_found_sub: "Esa página no existe (ya no). Prueba con:",
+    not_found_links: [
+      { href: "/es/", label: "Inicio" },
+      { href: "/es/#pricing", label: "Precios" },
+      { href: "/es/#faq", label: "Preguntas" },
+      { href: "/es/privacy/", label: "Privacidad" },
+    ],
+    skip: "Saltar al contenido",
+  },
+};
+

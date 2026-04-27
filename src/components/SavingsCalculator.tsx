@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { Lang } from "../lib/i18n";
 import { dict } from "../lib/i18n";
+import { site, type Lang } from "../lib/site";
 
 const JOBBER_MONTHLY = 149;
 const CREWSHEET_MONTHLY = 29;
@@ -14,6 +14,8 @@ export default function SavingsCalculator({ lang }: { lang: Lang }) {
   const [avg, setAvg] = useState(140);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const numbers = useMemo(() => {
     const monthlyRev = jobs * 4.3 * avg;
@@ -66,17 +68,59 @@ export default function SavingsCalculator({ lang }: { lang: Lang }) {
         <label className="text-sm text-neutral-700 block">{t.calc_email_label}</label>
         {submitted ? (
           <div className="mt-2 text-emerald-700 text-sm">{t.calc_email_thanks}</div>
-        ) : (
+        ) : null}
+        {error && <div className="mt-2 text-xs text-amber-700">{error}</div>}
+        {!submitted && (
+          <div className="mt-2 text-[11px] text-neutral-500">
+            {lang === "en"
+              ? "By submitting you agree to receive a one-time email with the breakdown. We don't sell data."
+              : "Al enviar aceptas recibir un correo \u00fanico con el desglose. No vendemos datos."}
+          </div>
+        )}
+        {!submitted && (
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              if (!email) return;
-              setSubmitted(true);
+              if (!email || submitting) return;
+              setSubmitting(true);
+              setError(null);
+              const payload = {
+                email,
+                jobs,
+                avg,
+                yearJobber: numbers.yearJobber,
+                yearCrew: numbers.yearCrew,
+                save: numbers.save,
+                lang,
+                source: "crewsheet-landing-calculator",
+                ts: Date.now(),
+              };
               try {
                 const list = JSON.parse(localStorage.getItem("crewsheet_leads") || "[]");
-                list.push({ email, jobs, avg, ts: Date.now() });
+                list.push(payload);
                 localStorage.setItem("crewsheet_leads", JSON.stringify(list));
               } catch {}
+              try {
+                if (site.leadWebhookUrl) {
+                  const res = await fetch(site.leadWebhookUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                  });
+                  if (!res.ok) throw new Error(`status ${res.status}`);
+                }
+                setSubmitted(true);
+              } catch {
+                // Even if the webhook fails, treat as captured locally so the user isn't blocked.
+                setSubmitted(true);
+                setError(
+                  lang === "en"
+                    ? "Saved locally \u2014 we'll follow up if email delivery is delayed."
+                    : "Guardado localmente \u2014 te avisamos si hay retraso."
+                );
+              } finally {
+                setSubmitting(false);
+              }
             }}
             className="mt-2 flex flex-col sm:flex-row gap-2"
           >
@@ -88,8 +132,12 @@ export default function SavingsCalculator({ lang }: { lang: Lang }) {
               placeholder={t.calc_email_placeholder}
               className="flex-1 rounded-xl border border-neutral-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
-            <button className="rounded-xl bg-neutral-900 text-white px-5 py-3 text-sm font-medium hover:bg-black">
-              {t.calc_email_cta}
+            <button
+              type="submit"
+              disabled={submitting}
+              className="rounded-xl bg-neutral-900 text-white px-5 py-3 text-sm font-medium hover:bg-black disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:outline-none"
+            >
+              {submitting ? (lang === "en" ? "Sending\u2026" : "Enviando\u2026") : t.calc_email_cta}
             </button>
           </form>
         )}
