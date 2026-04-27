@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0d10;
+  --ink: #0b0d10;
+  --paper: #ffffff;
+  --accent: #16a34a;
+  --accent-2: #22c55e;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+}
+
+html,
+body {
+  background: #fafaf7;
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+.shadow-soft {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.bg-grid {
+  background-image: linear-gradient(to right, #00000008 1px, transparent 1px),
+    linear-gradient(to bottom, #00000008 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.phone-frame {
+  border-radius: 36px;
+  background: #111;
+  padding: 10px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.35),
+    0 10px 20px -10px rgba(0, 0, 0, 0.25);
+}
+.phone-screen {
+  border-radius: 28px;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.tab-active {
+  background: #111;
+  color: #fff;
+}
+
+.fade-in {
+  animation: fade 250ms ease-out;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
