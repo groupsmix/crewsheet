@@ -44,7 +44,9 @@ export default function JsonLd({ lang, type }: { lang: Lang; type: "home" | "leg
         price: site.pricing.diy.price,
         priceCurrency: site.pricing.diy.currency,
         url: site.checkout.diy || `${url}#pricing`,
-        availability: "https://schema.org/InStock",
+        availability: site.checkout.diy
+          ? "https://schema.org/InStock"
+          : "https://schema.org/PreOrder",
       },
       {
         "@type": "Offer",
@@ -52,7 +54,9 @@ export default function JsonLd({ lang, type }: { lang: Lang; type: "home" | "leg
         price: site.pricing.dfy.price,
         priceCurrency: site.pricing.dfy.currency,
         url: site.checkout.dfy || `${url}#pricing`,
-        availability: "https://schema.org/InStock",
+        availability: site.checkout.dfy
+          ? "https://schema.org/InStock"
+          : "https://schema.org/PreOrder",
       },
       {
         "@type": "Offer",
@@ -67,7 +71,10 @@ export default function JsonLd({ lang, type }: { lang: Lang; type: "home" | "leg
           unitText: "MONTH",
         },
         url: site.checkout.pro || `${url}#pricing`,
-        availability: "https://schema.org/InStock",
+        availability:
+          site.enablePro && site.checkout.pro
+            ? "https://schema.org/InStock"
+            : "https://schema.org/PreOrder",
       },
     ],
   };

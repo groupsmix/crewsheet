@@ -19,6 +19,14 @@ export const site = {
   demoBookingUrl: process.env.NEXT_PUBLIC_DEMO_BOOKING_URL || "",
   // Lead capture webhook (ConvertKit form-submit URL, Resend Edge function, Apps Script /exec, etc.)
   leadWebhookUrl: process.env.NEXT_PUBLIC_LEAD_WEBHOOK_URL || "",
+  // Cloudflare Turnstile site key. Empty → form falls back to a honeypot only.
+  turnstileSiteKey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "",
+  // Feature flag: set to "1" only after Twilio A2P 10DLC brand + campaign are
+  // approved AND we have automated subscription billing wired. Until then, the
+  // Pro tier renders as a "join waitlist" card instead of a paid CTA. Selling
+  // automated US business SMS without A2P 10DLC registration is a
+  // carrier-fineable / Twilio-account-suspension offense.
+  enablePro: process.env.NEXT_PUBLIC_ENABLE_PRO === "1",
   analytics: {
     ga4: process.env.NEXT_PUBLIC_GA4_ID || "",
     plausibleDomain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || "",

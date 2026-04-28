@@ -108,10 +108,10 @@ export const dict = {
       price: "$29",
       sub: "/mo",
       bullets: [
-        "500 SMS credits/mo (Twilio A2P 10DLC included)",
+        "500 SMS credits/mo (delivered via Twilio once your A2P 10DLC use case is approved — we handle the registration)",
         "New automations as we ship them",
-        "Priority support (24h)",
-        "Cancel anytime, your Sheet keeps working",
+        "Priority email support (24h response, business days)",
+        "Cancel anytime — your Sheet and app keep working, you only lose the SMS credits",
       ],
       cta: "Add Pro",
     },
@@ -146,29 +146,11 @@ export const dict = {
     proof_disclaimer: "Paraphrased with permission. Real names and photos as we collect them.",
     proof_empty: "We're collecting case studies from launch users. Yours could be the first — grab the template and tell us how it goes.",
     proof_empty_cta: "Get the template",
-    proof_items: [
-      {
-        name: "Maria S.",
-        biz: "Sparkle House — Houston, TX",
-        quote:
-          "I had 38 recurring clients in a notebook. Set up CrewSheet in a Saturday morning. The auto-confirm SMS alone got me 3 cancellations back in the first month — that's $720.",
-        stat: "$11,400/mo",
-      },
-      {
-        name: "Daniel O.",
-        biz: "Two-Person Crew — Newark, NJ",
-        quote:
-          "Jobber was $149 and my wife refused to use the app. She uses CrewSheet because it's a Sheet she can read. We dropped Jobber.",
-        stat: "Saved $1,788/yr",
-      },
-      {
-        name: "Yelena P.",
-        biz: "Airbnb Turnover — Miami, FL",
-        quote:
-          "The Stripe quote link is unfair. I send it after the walkthrough and I'm booked before I'm back in the car.",
-        stat: "62% quote→book",
-      },
-    ],
+    // Testimonials intentionally empty until we have signed releases from real,
+    // attributable customers. Shipping invented testimonials is an FTC Endorsement
+    // Guides / EU UCPD deceptive-practices risk. When a real testimonial arrives,
+    // add it here AND flip NEXT_PUBLIC_SHOW_TESTIMONIALS=1.
+    proof_items: [] as { name: string; biz: string; quote: string; stat: string }[],
 
     faq_title: "Honest answers to the questions you're actually thinking",
     faq: [
@@ -321,10 +303,10 @@ export const dict = {
       price: "$29",
       sub: "/mes",
       bullets: [
-        "500 créditos SMS/mes (Twilio A2P 10DLC incluido)",
+        "500 créditos SMS/mes (vía Twilio una vez aprobado tu caso A2P 10DLC — el registro lo hacemos nosotros)",
         "Nuevas automatizaciones según las soltamos",
-        "Soporte prioritario (24h)",
-        "Cancela cuando quieras, tu Sheet sigue vivo",
+        "Soporte por email prioritario (respuesta en 24h, días hábiles)",
+        "Cancela cuando quieras — tu Sheet y la app siguen vivos, solo pierdes los créditos SMS",
       ],
       cta: "Agregar Pro",
     },
@@ -359,29 +341,8 @@ export const dict = {
     proof_disclaimer: "Parafraseado con permiso. Nombres y fotos reales según los recopilamos.",
     proof_empty: "Estamos recopilando casos de uso de los primeros usuarios. El tuyo puede ser el primero — lleva la plantilla y cuéntanos.",
     proof_empty_cta: "Llevar la plantilla",
-    proof_items: [
-      {
-        name: "María S.",
-        biz: "Sparkle House — Houston, TX",
-        quote:
-          "Tenía 38 clientes recurrentes en un cuaderno. Armé CrewSheet en una mañana. Solo el SMS de confirmación recuperó 3 cancelaciones el primer mes — son $720.",
-        stat: "$11,400/mes",
-      },
-      {
-        name: "Daniel O.",
-        biz: "Equipo de 2 — Newark, NJ",
-        quote:
-          "Jobber eran $149 y mi esposa no quería usar la app. Ella sí usa CrewSheet porque es un Sheet que puede leer. Cancelamos Jobber.",
-        stat: "Ahorro $1,788/año",
-      },
-      {
-        name: "Yelena P.",
-        biz: "Airbnb Turnover — Miami, FL",
-        quote:
-          "El enlace Stripe en la cotización es injusto. Lo mando después de la visita y ya está reservada antes de subir al carro.",
-        stat: "62% cotización→reserva",
-      },
-    ],
+    // See note on EN proof_items — empty until real, signed testimonials exist.
+    proof_items: [] as { name: string; biz: string; quote: string; stat: string }[],
 
     faq_title: "Respuestas honestas a lo que estás pensando",
     faq: [

@@ -1,0 +1,22 @@
+Copyright (c) 2026 CrewSheet. All rights reserved.
+
+This repository contains the source code for the CrewSheet marketing website
+(https://crewsheet.app). It is published in this repository for transparency
+and contributor convenience; it is NOT an open-source project.
+
+Permitted, without prior written permission:
+  - Reading the source for educational purposes.
+  - Submitting issues or pull requests intended to improve this repository.
+
+NOT permitted, without prior written permission from CrewSheet:
+  - Redistributing the source, in whole or in part, in any form.
+  - Operating a copy of this website under a different brand or domain.
+  - Repackaging the marketing copy, illustrations, JSON-LD content, or design
+    as your own product or template.
+
+The Google Sheet template, Glide / AppSheet application, Apps Script
+automations, and supporting deliverables sold under the CrewSheet brand are
+licensed separately to each paying customer; that license is set out in the
+purchase confirmation and on https://crewsheet.app/terms/.
+
+For licensing or commercial-use questions, contact hello@crewsheet.app.
