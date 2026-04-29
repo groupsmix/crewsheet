@@ -7,8 +7,8 @@ export default function TermsES() {
 
       <h2>1. El producto</h2>
       <p>
-        {site.name} es una plantilla de Google Sheet, un servicio opcional de setup y un
-        add-on opcional mensual (Pro). No es un SaaS de contabilidad, asesoría legal ni
+        {site.name} es una plantilla de Google Sheet con un servicio opcional de setup.
+        Ambos tiers son pago único. No es un SaaS de contabilidad, asesoría legal ni
         fiscal. Tus datos viven en tu cuenta de Google.
       </p>
 
@@ -22,11 +22,13 @@ export default function TermsES() {
         puedes revenderla como tu propio producto.
       </p>
 
-      <h2>4. SMS / A2P 10DLC (solo Pro)</h2>
+      <h2>4. Servicios de terceros</h2>
       <p>
-        Los SMS comerciales automáticos en EE. UU. requieren registro A2P 10DLC. Al
-        contratar el add-on autorizas el envío de mensajes en tu nombre dentro del
-        volumen de tu plan.
+        La plantilla se integra con Google Workspace (Sheets, Apps Script, Gmail) y
+        opcionalmente con Stripe, Glide o AppSheet usando tus propias cuentas. No somos
+        responsables de caídas, cambios de precio o cambios de política de esos
+        proveedores. El add-on de SMS mencionado en nuestra documentación no forma parte
+        de esta oferta y no está disponible para la venta actualmente.
       </p>
 
       <h2>5. Uso aceptable</h2>

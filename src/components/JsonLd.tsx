@@ -58,24 +58,6 @@ export default function JsonLd({ lang, type }: { lang: Lang; type: "home" | "leg
           ? "https://schema.org/InStock"
           : "https://schema.org/PreOrder",
       },
-      {
-        "@type": "Offer",
-        name: t.pricing_pro.h,
-        price: site.pricing.pro.price,
-        priceCurrency: site.pricing.pro.currency,
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: site.pricing.pro.price,
-          priceCurrency: site.pricing.pro.currency,
-          billingIncrement: 1,
-          unitText: "MONTH",
-        },
-        url: site.checkout.pro || `${url}#pricing`,
-        availability:
-          site.enablePro && site.checkout.pro
-            ? "https://schema.org/InStock"
-            : "https://schema.org/PreOrder",
-      },
     ],
   };
 

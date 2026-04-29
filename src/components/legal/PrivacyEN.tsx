@@ -61,7 +61,6 @@ export default function PrivacyEN() {
       <ul>
         <li>Stripe (payments) — <a href="https://stripe.com/privacy">stripe.com/privacy</a></li>
         <li>Google (Workspace email + Analytics) — <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
-        <li>Twilio (SMS, only if you purchase the Pro tier) — <a href="https://www.twilio.com/legal/privacy">twilio.com/legal/privacy</a></li>
         <li>Hosting / CDN provider — see your deployment target.</li>
       </ul>
 

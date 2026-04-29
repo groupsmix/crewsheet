@@ -64,7 +64,7 @@ export default function OG() {
             lineHeight: 1.3,
           }}
         >
-          DIY $97 · Setup $497 · Pro $29/mes · La quinta parte del costo de Jobber.
+          DIY $97 · Setup $497 · Pago único · La quinta parte del costo de Jobber.
         </div>
 
         <div
@@ -84,7 +84,7 @@ export default function OG() {
           <span style={{ display: "flex", gap: 12 }}>
             <Pill>Google Sheets</Pill>
             <Pill>Glide</Pill>
-            <Pill>Twilio</Pill>
+            <Pill>Apps Script</Pill>
             <Pill>Stripe</Pill>
           </span>
         </div>

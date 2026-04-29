@@ -20,12 +20,10 @@ export default function RefundEN() {
         <li>After 7 days the setup is non-refundable, but the underlying DIY template license remains yours forever.</li>
       </ul>
 
-      <h2>Pro Updates + SMS — $29/mo</h2>
+      <h2>Subscriptions</h2>
       <p>
-        Cancel any time from your account or by emailing{" "}
-        <a href={`mailto:${site.emailContact}`}>{site.emailContact}</a>. We don't pro-rate
-        the current month, but we never auto-bill again. Your Sheet and app keep
-        working — you just lose the included SMS credits.
+        None. {site.name} is sold as one-time purchases only. We don&apos;t auto-bill
+        you for anything.
       </p>
 
       <h2>Disputes / chargebacks</h2>

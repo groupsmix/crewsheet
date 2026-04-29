@@ -10,8 +10,8 @@ export default function TermsEN() {
 
       <h2>1. The product</h2>
       <p>
-        {site.name} is a Google Sheet template, optional setup service, and optional
-        monthly add-on (Pro). It is not a SaaS replacement for accounting, legal, or tax
+        {site.name} is a Google Sheet template with optional setup service. Both tiers are
+        one-time purchases. It is not a SaaS replacement for accounting, legal, or tax
         advice. Your data lives in your Google account.
       </p>
 
@@ -30,11 +30,13 @@ export default function TermsEN() {
         re-package the template as your own product.
       </p>
 
-      <h2>4. SMS / A2P 10DLC (Pro tier only)</h2>
+      <h2>4. Third-party services</h2>
       <p>
-        US automated business SMS requires A2P 10DLC registration. By using our SMS add-on
-        you authorize us to send messages on your behalf within the volume your tier
-        permits, and you agree to the terms of our upstream provider (Twilio).
+        The template integrates with Google Workspace (Sheets, Apps Script, Gmail) and
+        optionally with Stripe, Glide, or AppSheet under your own accounts. We are not
+        responsible for outages, pricing changes, or policy changes at those providers.
+        The SMS add-on referenced anywhere in our documentation is not part of this
+        offering and is not available for purchase at this time.
       </p>
 
       <h2>5. Acceptable use</h2>

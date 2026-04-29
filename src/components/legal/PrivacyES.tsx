@@ -50,7 +50,6 @@ export default function PrivacyES() {
       <ul>
         <li>Stripe (pagos)</li>
         <li>Google (correo y Analytics)</li>
-        <li>Twilio (SMS, solo si compras Pro)</li>
         <li>Proveedor de hosting / CDN</li>
       </ul>
 

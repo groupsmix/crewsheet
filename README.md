@@ -60,7 +60,6 @@ just falls back to safe defaults.
 | `NEXT_PUBLIC_GITHUB_URL` | Optional GitHub / company URL for `Organization.sameAs`. |
 | `NEXT_PUBLIC_CHECKOUT_DIY` | Stripe / Gumroad / Stan / Lemon Squeezy URL for the $97 DIY tier. |
 | `NEXT_PUBLIC_CHECKOUT_DFY` | Checkout URL for the $497 Done-For-You tier. |
-| `NEXT_PUBLIC_CHECKOUT_PRO` | Checkout URL for the $29/mo Pro tier. |
 | `NEXT_PUBLIC_DEMO_BOOKING_URL` | Cal.com / Savvycal / Calendly URL for "Book a 15-min demo". |
 | `NEXT_PUBLIC_LEAD_WEBHOOK_URL` | Webhook the savings-calculator email form POSTs JSON to (ConvertKit, Resend Edge Function, Apps Script `/exec`, etc.). |
 | `NEXT_PUBLIC_GA4_ID` | GA4 measurement ID (e.g. `G-XXXX`). Empty → no GA. |
@@ -72,12 +71,15 @@ just falls back to safe defaults.
 
 1. Buy `crewsheet.app`, point DNS at your host, force HTTPS, force one canonical host (apex or `www`, 301 the other).
 2. Verify `curl -I https://crewsheet.app` does **not** return `x-robots-tag: noindex`.
-3. Set every `NEXT_PUBLIC_*` env var that applies. At minimum: `NEXT_PUBLIC_SITE_URL`, the three `CHECKOUT_*` URLs, `LEAD_WEBHOOK_URL`, `FOUNDER_NAME`, `CONTACT_EMAIL`, `AFFILIATES_EMAIL`.
+3. Set every `NEXT_PUBLIC_*` env var that applies. At minimum: `NEXT_PUBLIC_SITE_URL`, the two `CHECKOUT_*` URLs, `LEAD_WEBHOOK_URL`, `FOUNDER_NAME`, `CONTACT_EMAIL`, `AFFILIATES_EMAIL`.
 4. Replace the legal copy in `src/components/legal/*.tsx` with text reviewed by your counsel for your jurisdiction.
 5. Set up the support + affiliate inboxes referenced by your env vars.
 6. Submit the sitemap (`https://crewsheet.app/sitemap.xml`) in Google Search Console and Bing Webmaster Tools.
-7. If using SMS / Pro tier: complete A2P 10DLC registration with Twilio before selling Pro.
-8. Once you have 3 real testimonials, set `NEXT_PUBLIC_SHOW_TESTIMONIALS=1` and edit `src/lib/i18n.ts`'s `proof_items` arrays.
+7. Once you have 3 real testimonials, set `NEXT_PUBLIC_SHOW_TESTIMONIALS=1` and edit `src/lib/i18n.ts`'s `proof_items` arrays.
+
+### SMS / Pro tier (post-v1)
+
+v1 ships with email automations only. The SMS add-on (Twilio A2P 10DLC) is descoped from initial launch and will ship as a separate product once registration completes. See `docs/LAUNCH-PLAN.md` for the phased reintroduction plan.
 
 ## Key files
 
