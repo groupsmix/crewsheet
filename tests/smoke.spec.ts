@@ -80,6 +80,9 @@ test("Pro tier is fully removed from v1 (no SMS claims, no third pricing card)",
     "/mo\"",
     "a2p 10dlc",
     "join waitlist",
+    // Demo / UI claims that we *send* SMS. v1 sends email only.
+    "sms sent",
+    "sms enviado",
   ];
   for (const needle of forbidden) {
     expect(html, `forbidden marketing string leaked: ${needle}`).not.toContain(needle);

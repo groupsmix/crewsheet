@@ -5,7 +5,6 @@ import { dict } from "../lib/i18n";
 import { site, type Lang } from "../lib/site";
 
 const JOBBER_MONTHLY = 149;
-const CREWSHEET_MONTHLY = 29;
 const CREWSHEET_ONE_TIME = 97;
 
 declare global {
@@ -66,7 +65,10 @@ export default function SavingsCalculator({ lang }: { lang: Lang }) {
   const numbers = useMemo(() => {
     const monthlyRev = jobs * 4.3 * avg;
     const yearJobber = JOBBER_MONTHLY * 12;
-    const yearCrew = CREWSHEET_MONTHLY * 12 + CREWSHEET_ONE_TIME;
+    // CrewSheet v1 is a one-time purchase only (no recurring SaaS fee). Year-1 cost = the
+    // one-time DIY price; subsequent years are $0. Using year-1 here for the apples-to-apples
+    // comparison against Jobber's annual subscription.
+    const yearCrew = CREWSHEET_ONE_TIME;
     const save = yearJobber - yearCrew;
     return { monthlyRev, yearJobber, yearCrew, save };
   }, [jobs, avg]);
