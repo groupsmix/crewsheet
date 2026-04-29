@@ -1,12 +1,24 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { dict } from "../lib/i18n";
 import { site, type Lang } from "../lib/site";
 
 const JOBBER_MONTHLY = 149;
 const CREWSHEET_MONTHLY = 29;
 const CREWSHEET_ONE_TIME = 97;
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        el: HTMLElement,
+        opts: { sitekey: string; callback: (token: string) => void; theme?: string },
+      ) => string;
+      reset: (id?: string) => void;
+    };
+  }
+}
 
 export default function SavingsCalculator({ lang }: { lang: Lang }) {
   const t = dict[lang];
@@ -16,6 +28,40 @@ export default function SavingsCalculator({ lang }: { lang: Lang }) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Honeypot: real humans never fill this; bots that auto-fill every input will.
+  const [hp, setHp] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<HTMLDivElement | null>(null);
+  const renderedTurnstile = useRef(false);
+
+  useEffect(() => {
+    if (!site.turnstileSiteKey) return;
+    if (renderedTurnstile.current) return;
+    const id = "cf-turnstile-script";
+    if (!document.getElementById(id)) {
+      const s = document.createElement("script");
+      s.id = id;
+      s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+      s.async = true;
+      s.defer = true;
+      document.head.appendChild(s);
+    }
+    const tryRender = () => {
+      if (!window.turnstile || !turnstileRef.current || renderedTurnstile.current) return;
+      window.turnstile.render(turnstileRef.current, {
+        sitekey: site.turnstileSiteKey,
+        callback: (token: string) => setTurnstileToken(token),
+        theme: "light",
+      });
+      renderedTurnstile.current = true;
+    };
+    const interval = window.setInterval(tryRender, 250);
+    const timeout = window.setTimeout(() => window.clearInterval(interval), 8000);
+    return () => {
+      window.clearInterval(interval);
+      window.clearTimeout(timeout);
+    };
+  }, []);
 
   const numbers = useMemo(() => {
     const monthlyRev = jobs * 4.3 * avg;
@@ -82,6 +128,20 @@ export default function SavingsCalculator({ lang }: { lang: Lang }) {
             onSubmit={async (e) => {
               e.preventDefault();
               if (!email || submitting) return;
+              // Honeypot trip — silently succeed so bots don't learn they were filtered.
+              if (hp) {
+                setSubmitted(true);
+                return;
+              }
+              // If Turnstile is configured but no token yet, block.
+              if (site.turnstileSiteKey && !turnstileToken) {
+                setError(
+                  lang === "en"
+                    ? "Please complete the human-check below the button."
+                    : "Por favor completa la verificaci\u00f3n debajo del bot\u00f3n.",
+                );
+                return;
+              }
               setSubmitting(true);
               setError(null);
               const payload = {
@@ -94,6 +154,7 @@ export default function SavingsCalculator({ lang }: { lang: Lang }) {
                 lang,
                 source: "crewsheet-landing-calculator",
                 ts: Date.now(),
+                turnstileToken: turnstileToken || undefined,
               };
               try {
                 const list = JSON.parse(localStorage.getItem("crewsheet_leads") || "[]");
@@ -132,6 +193,17 @@ export default function SavingsCalculator({ lang }: { lang: Lang }) {
               placeholder={t.calc_email_placeholder}
               className="flex-1 rounded-xl border border-neutral-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
+            {/* Honeypot — visually hidden, screen-reader hidden, off-screen. Real users never fill this. */}
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              name="company_website"
+              value={hp}
+              onChange={(e) => setHp(e.target.value)}
+              style={{ position: "absolute", left: "-10000px", width: 1, height: 1, opacity: 0 }}
+            />
             <button
               type="submit"
               disabled={submitting}
@@ -140,6 +212,9 @@ export default function SavingsCalculator({ lang }: { lang: Lang }) {
               {submitting ? (lang === "en" ? "Sending\u2026" : "Enviando\u2026") : t.calc_email_cta}
             </button>
           </form>
+        )}
+        {!submitted && site.turnstileSiteKey && (
+          <div ref={turnstileRef} className="mt-3" data-testid="turnstile-mount" />
         )}
       </div>
     </div>

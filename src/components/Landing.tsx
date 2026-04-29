@@ -194,13 +194,17 @@ export default function Landing({ lang }: { lang: Lang }) {
                 href={checkout("dfy")}
               />
               <PriceCard
-                tag={t.pricing_pro.tag}
+                tag={site.enablePro ? t.pricing_pro.tag : (lang === "en" ? "Coming soon" : "Próximamente")}
                 h={t.pricing_pro.h}
-                price={t.pricing_pro.price}
-                sub={t.pricing_pro.sub}
+                price={site.enablePro ? t.pricing_pro.price : (lang === "en" ? "Soon" : "Pronto")}
+                sub={site.enablePro ? t.pricing_pro.sub : ""}
                 bullets={[...t.pricing_pro.bullets]}
-                cta={t.pricing_pro.cta}
-                href={checkout("pro")}
+                cta={site.enablePro ? t.pricing_pro.cta : (lang === "en" ? "Join waitlist" : "Lista de espera")}
+                href={
+                  site.enablePro
+                    ? checkout("pro")
+                    : `mailto:${site.emailContact}?subject=${encodeURIComponent("Pro waitlist")}`
+                }
               />
             </div>
             <p className="mt-6 text-xs text-neutral-500 max-w-2xl">{t.pricing_disclaimer}</p>
