@@ -136,7 +136,6 @@ export default function SavingsCalculator({ lang }: { lang: Lang }) {
               // If Turnstile is configured but no token yet, block.
               if (site.turnstileSiteKey && !turnstileToken) {
                 setError(
-                setError(
                   lang === "en"
                     ? "Please complete the human-check below the button."
                     : "Por favor completa la verificaci\u00f3n debajo del bot\u00f3n.",
