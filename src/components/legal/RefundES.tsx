@@ -19,11 +19,10 @@ export default function RefundES() {
         <li>Después de 7 días el setup no es reembolsable, pero la licencia de la plantilla DIY queda tuya para siempre.</li>
       </ul>
 
-      <h2>Pro Updates + SMS — $29/mes</h2>
+      <h2>Suscripciones</h2>
       <p>
-        Cancela cuando quieras desde tu cuenta o por correo a{" "}
-        <a href={`mailto:${site.emailContact}`}>{site.emailContact}</a>. No
-        prorrateamos el mes en curso pero nunca volvemos a cobrarte.
+        Ninguna. {site.name} se vende como pagos únicos. No te cobramos recurrentemente
+        por nada.
       </p>
 
       <h2>Disputas / contracargos</h2>

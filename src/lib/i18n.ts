@@ -17,7 +17,7 @@ export const dict = {
       "Stop losing customers to missed follow-ups. CrewSheet turns a Sheet into a phone app for your jobs, customers, quotes and money. Set up in under an hour. 1/5th the cost of Jobber.",
     hero_bullets: [
       "Today's route + check-in/out + checklists",
-      "Auto SMS: on-the-way, post-job receipt, recurring confirmations",
+      "Recurring-job confirmations, review requests and quote follow-ups (via email now — SMS add-on coming post-launch)",
       "Public quote form → Stripe Checkout link",
       "You own the data. Edit the Sheet, the app updates.",
     ],
@@ -29,15 +29,15 @@ export const dict = {
     pain_items: [
       {
         h: "Missed follow-ups",
-        p: "Quotes sit in your texts. CrewSheet auto-pings the customer 24h after a quote with the Stripe link.",
+        p: "Quotes sit in your texts. CrewSheet auto-emails the customer 24h after a quote with the Stripe link.",
       },
       {
         h: "Forgotten reviews",
-        p: "Post-job SMS sends your Google Review link the moment you check out. 4× more reviews, no awkward asks.",
+        p: "Post-job email asks for a Google Review the moment you check out. 4× more reviews, no awkward asks.",
       },
       {
         h: "No-shows on recurring jobs",
-        p: "3 days before every recurring clean: auto-confirm SMS. Cancellations move to the gap list, not lost revenue.",
+        p: "3 days before every recurring clean: auto-confirmation email. Cancellations move to the gap list, not lost revenue.",
       },
       {
         h: "Cash chaos at tax time",
@@ -49,7 +49,7 @@ export const dict = {
     demo_sub:
       "This is the actual app on a phone. Tap the tabs. Tap a job. It's not a video.",
     demo_caption:
-      "Your customers don't see this. They only see clean SMS messages, a quote link and your Google Review request.",
+      "Your customers don't see this. They only see clean confirmation emails, a quote link and your Google Review request.",
 
     how_title: "How it works",
     how_steps: [
@@ -66,7 +66,7 @@ export const dict = {
       {
         n: "3",
         h: "Apps Script does the boring stuff",
-        p: "Time-stamp check-ins. Send the SMS. Email the Sunday summary. Generate Stripe links. You don't touch any of it.",
+        p: "Time-stamp check-ins. Email quote follow-ups and the Sunday summary. Generate Stripe links. You don't touch any of it.",
       },
     ],
 
@@ -97,31 +97,18 @@ export const dict = {
         "Everything in DIY",
         "We set it up under your Google account on a 30-min Zoom",
         "We import your existing customers (CSV or screenshot)",
-        "We connect your Stripe + Twilio + Google Voice",
+        "We connect your Stripe + Gmail so quote/review/summary emails send automatically",
         "30 days of email support",
       ],
       cta: "Book setup call",
     },
-    pricing_pro: {
-      tag: "Add-on",
-      h: "Pro Updates + SMS",
-      price: "$29",
-      sub: "/mo",
-      bullets: [
-        "500 SMS credits/mo (delivered via Twilio once your A2P 10DLC use case is approved — we handle the registration)",
-        "New automations as we ship them",
-        "Priority email support (24h response, business days)",
-        "Cancel anytime — your Sheet and app keep working, you only lose the SMS credits",
-      ],
-      cta: "Add Pro",
-    },
     pricing_disclaimer:
-      "Real talk: this is not a $149/mo SaaS dressed up. It's a template + setup. Your Sheet is yours forever.",
+      "Real talk: this is not a $149/mo SaaS dressed up. It's a template + setup, paid once. Your Sheet is yours forever.",
 
     compare_title: "vs. Jobber, Housecall Pro, ZenMaid",
     compare_cols: ["", "CrewSheet", "Jobber", "Housecall Pro", "ZenMaid"],
     compare_rows: [
-      ["Monthly cost", "$0–$29", "$149", "$59", "$39"],
+      ["Monthly cost", "$0", "$149", "$59", "$39"],
       ["You own the data", "Yes (your Sheet)", "No", "No", "No"],
       ["Setup time", "40 min", "Hours", "Hours", "Hours"],
       ["Edit fields yourself", "Yes (add a column)", "No", "No", "No"],
@@ -134,7 +121,7 @@ export const dict = {
     calc_jobs_label: "Jobs per week",
     calc_avg_label: "Avg ticket ($)",
     calc_today: "Your monthly software cost today (Jobber Connect)",
-    calc_crewsheet: "CrewSheet (DIY + Pro SMS)",
+    calc_crewsheet: "CrewSheet (DIY, one-time)",
     calc_save: "You save",
     calc_save_yr: "per year",
     calc_email_label: "Email me the breakdown + Cleaning Business Pricing Cheat Sheet (PDF)",
@@ -159,16 +146,16 @@ export const dict = {
         a: "If you can type a customer's name into a row, you're fine. The template comes with sample data, every column has a tooltip, and the 15-min Loom walks you through it. If you want zero typing, take the Done-For-You option.",
       },
       {
-        q: "What about SMS — isn't there some new US 10DLC rule?",
-        a: "Yes, and we're not going to lie about it. To send automated business SMS in the US you need A2P 10DLC registration (1–3 weeks, ~$20 setup, fractions of a cent per message). Pro includes 500 credits/mo with that already handled. Or you can use your own Twilio account — we'll point at it.",
+        q: "Do you send SMS?",
+        a: "Not yet. v1 ships with email automations only (quote follow-ups, review requests, Sunday summary, recurring-job confirmations). Automated US business SMS requires a separate carrier-registered messaging program, which we're working on as a future add-on. For now, CrewSheet does not claim to send SMS.",
       },
       {
         q: "Is this really a SaaS, or is it a template?",
-        a: "It's a template + setup, sold honestly. Your data lives in your Google Sheet, in your Google account. If we disappeared tomorrow, your business keeps running. The $29/mo Pro is for SMS credits + new automations — cancel anytime.",
+        a: "It's a template + setup, sold honestly, paid once. Your data lives in your Google Sheet, in your Google account. If we disappeared tomorrow, your business keeps running. No recurring bill from us.",
       },
       {
         q: "Can I cancel? What about refunds?",
-        a: "DIY: 14-day no-questions refund. Done-For-You: 100% refund before the setup call, 50% within 7 days after. Pro: cancel anytime, your Sheet and app keep working — you just lose the SMS credits.",
+        a: "DIY: 14-day no-questions refund. Done-For-You: 100% refund before the setup call, 50% within 7 days after. No subscription to cancel — everything is one-time.",
       },
       {
         q: "What if I have 2 cleaners on different phones?",
@@ -176,7 +163,7 @@ export const dict = {
       },
       {
         q: "Will my customers' phone numbers and addresses be safe?",
-        a: "Your Sheet lives in your Google account. We never see it. SMS goes through your Twilio account (or ours, with your permission). No third-party DB, no scraping.",
+        a: "Your Sheet lives in your Google account. We never see it. Emails are sent through your Gmail via Apps Script. No third-party DB, no scraping.",
       },
     ],
 
@@ -213,7 +200,7 @@ export const dict = {
       "Deja de perder clientes por seguimientos olvidados. CrewSheet convierte un Sheet en una app de teléfono para trabajos, clientes, cotizaciones y dinero. Listo en menos de una hora. La quinta parte del costo de Jobber.",
     hero_bullets: [
       "Ruta del día + entrada/salida + listas de tareas",
-      "SMS automáticos: en camino, recibo, confirmación recurrente",
+      "Confirmación recurrente, pedido de reseña y seguimiento de cotización (por email ahora — SMS llega después del lanzamiento)",
       "Formulario público de cotización → enlace Stripe",
       "Tus datos son tuyos. Editas el Sheet, la app se actualiza.",
     ],
@@ -225,15 +212,15 @@ export const dict = {
     pain_items: [
       {
         h: "Seguimientos perdidos",
-        p: "Las cotizaciones se quedan en tus mensajes. CrewSheet manda un SMS 24h después con el enlace de Stripe.",
+        p: "Las cotizaciones se quedan en tus mensajes. CrewSheet manda un email 24h después con el enlace de Stripe.",
       },
       {
         h: "Reseñas olvidadas",
-        p: "SMS al terminar con tu enlace de Google Reviews. 4× más reseñas, sin pedirlas en persona.",
+        p: "Email al terminar con tu enlace de Google Reviews. 4× más reseñas, sin pedirlas en persona.",
       },
       {
         h: "Trabajos recurrentes que no se confirman",
-        p: "3 días antes de cada limpieza recurrente: SMS automático de confirmación. Las cancelaciones van a la lista de huecos, no a pérdida.",
+        p: "3 días antes de cada limpieza recurrente: email automático de confirmación. Las cancelaciones van a la lista de huecos, no a pérdida.",
       },
       {
         h: "Caos de efectivo en impuestos",
@@ -244,7 +231,7 @@ export const dict = {
     demo_title: "Pruébalo. Aquí mismo.",
     demo_sub: "Esta es la app real en un teléfono. Toca las pestañas. Toca un trabajo. No es un video.",
     demo_caption:
-      "Tus clientes no ven esto. Solo reciben mensajes claros, un enlace de cotización y tu pedido de reseña.",
+      "Tus clientes no ven esto. Solo reciben emails claros, un enlace de cotización y tu pedido de reseña.",
 
     how_title: "Cómo funciona",
     how_steps: [
@@ -261,7 +248,7 @@ export const dict = {
       {
         n: "3",
         h: "Apps Script hace lo aburrido",
-        p: "Marca entradas. Manda los SMS. Manda el resumen del domingo. Genera enlaces de Stripe. Tú no tocas nada.",
+        p: "Marca entradas. Manda los seguimientos por email y el resumen del domingo. Genera enlaces de Stripe. Tú no tocas nada.",
       },
     ],
 
@@ -292,31 +279,18 @@ export const dict = {
         "Todo lo del DIY",
         "Lo armamos en tu cuenta de Google en un Zoom de 30 min",
         "Importamos tus clientes (CSV o foto)",
-        "Conectamos Stripe + Twilio + Google Voice",
+        "Conectamos Stripe + Gmail para que los emails de cotización, reseña y resumen salgan automáticos",
         "30 días de soporte por email",
       ],
       cta: "Reserva el setup",
     },
-    pricing_pro: {
-      tag: "Add-on",
-      h: "Pro Updates + SMS",
-      price: "$29",
-      sub: "/mes",
-      bullets: [
-        "500 créditos SMS/mes (vía Twilio una vez aprobado tu caso A2P 10DLC — el registro lo hacemos nosotros)",
-        "Nuevas automatizaciones según las soltamos",
-        "Soporte por email prioritario (respuesta en 24h, días hábiles)",
-        "Cancela cuando quieras — tu Sheet y la app siguen vivos, solo pierdes los créditos SMS",
-      ],
-      cta: "Agregar Pro",
-    },
     pricing_disclaimer:
-      "Verdad: esto no es un SaaS de $149/mes disfrazado. Es plantilla + setup. Tu Sheet es tuyo para siempre.",
+      "Verdad: esto no es un SaaS de $149/mes disfrazado. Es plantilla + setup, pago único. Tu Sheet es tuyo para siempre.",
 
     compare_title: "vs. Jobber, Housecall Pro, ZenMaid",
     compare_cols: ["", "CrewSheet", "Jobber", "Housecall Pro", "ZenMaid"],
     compare_rows: [
-      ["Costo mensual", "$0–$29", "$149", "$59", "$39"],
+      ["Costo mensual", "$0", "$149", "$59", "$39"],
       ["Eres dueño de los datos", "Sí (tu Sheet)", "No", "No", "No"],
       ["Tiempo de setup", "40 min", "Horas", "Horas", "Horas"],
       ["Editas campos tú mismo", "Sí (agregas columna)", "No", "No", "No"],
@@ -329,7 +303,7 @@ export const dict = {
     calc_jobs_label: "Trabajos por semana",
     calc_avg_label: "Ticket promedio ($)",
     calc_today: "Lo que pagas hoy (Jobber Connect)",
-    calc_crewsheet: "CrewSheet (DIY + Pro SMS)",
+    calc_crewsheet: "CrewSheet (DIY, pago único)",
     calc_save: "Ahorras",
     calc_save_yr: "al año",
     calc_email_label: "Mándame el desglose + el PDF de precios para limpiadores",
@@ -351,16 +325,16 @@ export const dict = {
         a: "Si puedes escribir el nombre de un cliente en una fila, sí. La plantilla viene con datos de ejemplo, cada columna tiene un tooltip, y el Loom de 15 min te lleva paso a paso. Si no quieres tocar nada, toma el Setup Hecho-Por-Nosotros.",
       },
       {
-        q: "¿Y los SMS? Hay reglas nuevas en EE.UU. ¿no?",
-        a: "Sí, y no te vamos a mentir. Para mandar SMS comerciales automáticos en EE.UU. necesitas registro A2P 10DLC (1–3 semanas, ~$20 setup, fracciones de centavo por mensaje). Pro incluye 500 créditos/mes con eso ya resuelto. O usas tu propia cuenta Twilio.",
+        q: "¿Mandan SMS?",
+        a: "Todavía no. v1 sale con automatizaciones por email (seguimiento de cotización, pedido de reseña, resumen del domingo, confirmación recurrente). Los SMS comerciales automáticos en EE.UU. requieren un programa de mensajería registrado con la operadora — lo estamos preparando como add-on aparte. Por ahora CrewSheet no promete mandar SMS.",
       },
       {
         q: "¿Es SaaS de verdad o es una plantilla?",
-        a: "Es plantilla + setup, vendido honestamente. Tus datos viven en tu Sheet, en tu cuenta de Google. Si desaparecemos mañana, tu negocio sigue. El Pro de $29/mes es por créditos SMS + automatizaciones nuevas — cancela cuando quieras.",
+        a: "Es plantilla + setup, vendido honestamente, pago único. Tus datos viven en tu Sheet, en tu cuenta de Google. Si desaparecemos mañana, tu negocio sigue. Sin factura mensual.",
       },
       {
         q: "¿Puedo cancelar? ¿Reembolsos?",
-        a: "DIY: 14 días, sin preguntas. Done-For-You: 100% antes de la llamada, 50% dentro de 7 días. Pro: cancela cuando quieras — tu Sheet y app siguen funcionando, solo pierdes los créditos SMS.",
+        a: "DIY: 14 días, sin preguntas. Done-For-You: 100% antes de la llamada, 50% dentro de 7 días. No hay suscripción que cancelar — todo es pago único.",
       },
       {
         q: "¿Y si tengo 2 limpiadores en teléfonos distintos?",
@@ -368,7 +342,7 @@ export const dict = {
       },
       {
         q: "¿Los datos de mis clientes están seguros?",
-        a: "Tu Sheet vive en tu cuenta de Google. Nosotros nunca lo vemos. Los SMS pasan por tu cuenta Twilio (o la nuestra, con tu permiso).",
+        a: "Tu Sheet vive en tu cuenta de Google. Nosotros nunca lo vemos. Los emails salen desde tu Gmail vía Apps Script. Sin base de datos de terceros.",
       },
     ],
 

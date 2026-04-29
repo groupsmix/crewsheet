@@ -85,8 +85,6 @@ export default function Landing({ lang }: { lang: Lang }) {
               <span aria-hidden>·</span>
               <span>Apps Script</span>
               <span aria-hidden>·</span>
-              <span>Twilio</span>
-              <span aria-hidden>·</span>
               <span>Stripe</span>
             </div>
           </div>
@@ -173,7 +171,7 @@ export default function Landing({ lang }: { lang: Lang }) {
               <p className="mt-3 text-neutral-400">{t.pricing_sub}</p>
             </div>
 
-            <div className="mt-10 grid md:grid-cols-3 gap-4">
+            <div className="mt-10 grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
               <PriceCard
                 tag={t.pricing_diy.tag}
                 h={t.pricing_diy.h}
@@ -192,19 +190,6 @@ export default function Landing({ lang }: { lang: Lang }) {
                 bullets={[...t.pricing_dfy.bullets]}
                 cta={t.pricing_dfy.cta}
                 href={checkout("dfy")}
-              />
-              <PriceCard
-                tag={site.enablePro ? t.pricing_pro.tag : (lang === "en" ? "Coming soon" : "Próximamente")}
-                h={t.pricing_pro.h}
-                price={site.enablePro ? t.pricing_pro.price : (lang === "en" ? "Soon" : "Pronto")}
-                sub={site.enablePro ? t.pricing_pro.sub : ""}
-                bullets={[...t.pricing_pro.bullets]}
-                cta={site.enablePro ? t.pricing_pro.cta : (lang === "en" ? "Join waitlist" : "Lista de espera")}
-                href={
-                  site.enablePro
-                    ? checkout("pro")
-                    : `mailto:${site.emailContact}?subject=${encodeURIComponent("Pro waitlist")}`
-                }
               />
             </div>
             <p className="mt-6 text-xs text-neutral-500 max-w-2xl">{t.pricing_disclaimer}</p>

@@ -63,14 +63,28 @@ test("no fabricated testimonials are rendered when SHOW_TESTIMONIALS is unset", 
   }
 });
 
-test("Pro pricing card defaults to waitlist when ENABLE_PRO is unset", async ({ page }) => {
+test("Pro tier is fully removed from v1 (no SMS claims, no third pricing card)", async ({
+  page,
+}) => {
   await page.goto(`${BASE}/#pricing`);
-  // Either we see "Coming soon" / "Join waitlist" (default), or — if the build
-  // explicitly enabled Pro — the waitlist text is absent. Both are valid; this
-  // test's job is to ensure that when Pro is *not* enabled, we don't accidentally
-  // expose a paid Pro CTA.
   const html = (await page.content()).toLowerCase();
-  if (process.env.NEXT_PUBLIC_ENABLE_PRO !== "1") {
-    expect(html).toContain("waitlist");
+  // v1 ships with 2 paid tiers (DIY + DFY) only. The Pro / SMS add-on is
+  // descoped until Twilio A2P 10DLC registration completes. This test guards
+  // against anyone reintroducing a Pro CTA, a $29/mo subscription price, or
+  // marketing copy that claims we send SMS.
+  const forbidden = [
+    "add pro",
+    "pro updates + sms",
+    "500 sms credits",
+    "$29/mo",
+    "/mo\"",
+    "a2p 10dlc",
+    "join waitlist",
+  ];
+  for (const needle of forbidden) {
+    expect(html, `forbidden marketing string leaked: ${needle}`).not.toContain(needle);
   }
+  // Both legitimate tiers are present.
+  expect(html).toContain("diy template");
+  expect(html).toContain("done-for-you");
 });
